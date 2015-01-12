@@ -2,8 +2,6 @@
 
 The purpose of this survey is to assess the featuresets of existing open source graph databases and graph analytics platforms and to determine which (if any) of these platforms are suitable for processing streaming updates to a large collection of graphs and triggering notifications when those updates cause certain conditions to be met or cease to be met.
 
-The points of comparison were chosen to determine both the general usefullness of each system under consideration for different use cases including the streaming and triggering scenario described above.
-
 ## Points of comparison
 
 |Name|Query Languages|Language Bindings/APIs Available|ACID Compliance|Eventual Consistency Support|Single Machine Mode?|Cluster Mode?|Platform Dependencies|Graph Size Limited by Memory?|Supports Edge Labels?|Supports Vertex Labels?|Supports Dynamic Graphs/Streaming?|Supports Triggering|Supports Many Graphs|Type?|Access Control Features|Supports Auditing|Open Source?|Commercial Support Available?|Major Advocates|Large Users|Supported Import/Export Formats|Active Community?|Quality of Documentation|
