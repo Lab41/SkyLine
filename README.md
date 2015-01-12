@@ -22,7 +22,7 @@ The points of comparison were chosen to determine both the general usefullness o
 
 ## References
 
-Due to the number of systems under consideration varied nature of the points on which they were compared, this section is unfortunately long, as a significant amount of research was required to answer some of the questions posed in creating the above table.
+Due to the number of systems under consideration and the varied nature of the points on which they were compared, this section is unfortunately long, as a significant amount of research was required to answer some of the questions posed in creating the above table.
 
 1. http://ampcamp.berkeley.edu/big-data-mini-course/graph-analytics-with-graphx.html
 1. http://apache-spark-user-list.1001560.n3.nabble.com/Incrementally-add-remove-vertices-in-GraphX-td2227.html
