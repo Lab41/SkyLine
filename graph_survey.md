@@ -1,26 +1,19 @@
-GRAPH SURVEY
-===========
+# Market Survey of Graph Databases/Analytics Platforms
 
-Details:
--  High-level description and distinctions
--  Memory consumption
--  Load/Save times (general speed)
-- General Features
-- Serialization techniques
--  Properties and values
--  Static Dynamic
-- Directed/Undirected
-- What are we lacking
-- walking the graph  
-- support for appends/deletions (marking)
-- how is time handled
-- access control
-- architecture stack
-- implementation reqs
-- licensing/costs
-- support
-- query language
-- client bindings
-- extendability
-- triggering ability
-- ACID compliance
+The purpose of this survey is to assess the featuresets of existing open source graph databases and graph analytics platforms and to determine which (if any) of these platforms are suitable for processing streaming updates to a large collection of graphs and triggering notifications when those updates cause certain conditions to be met or cease to be met.
+
+## Points of comparison
+
+|Name|Query Languages|Language Bindings/APIs Available|ACID Compliance|Eventual Consistency Support|Single Machine Mode?|Cluster Mode?|Platform Dependencies|Graph Size Limited by Memory?|Supports Edge Labels?|Supports Vertex Labels?|Supports Dynamic Graphs/Streaming?|Supports Triggering|Supports Many Graphs|Type?|Access Control Features|Supports Auditing|Open Source?|Commercial Support Available?|Major Advocates|Large Users|Supported Import/Export Formats|Active Community?|Quality of Documentation|
+|:------------------|:------------------------------------|:-------------------------------------------------------------------------------------------------|:--------------------------|:-----------------------------|:---------------------|:----------------------------------------------|:----------------------|:------------------------------|:----------------------------|:----------------------------|:-----------------------------------|:--------------------|:---------------------|:-----------------------|:------------------------------------------------------------------------|:-----------------------------------------|:------------------------------------------------------|:---------------------------------------|:------------------|:---------------------------------|:--------------------------------|:--------------------------------------------------------------------|:---------------------------------------|
+|Titan (HBase)|Gremlin|Any via Rexter HTTP (for triggering stored procedures)|No|No (vertex consistency only)|Yes|Yes|None|No|Yes|Yes|Yes|Yes (via EventGraph)|Yes|Database|No. (Column level at best at the Hbase Level, no cell level security)|No|Yes (Apache 2)|Yes (from primary maintainers Aurelius)|Aurelius|CISCO, LANL, Digital Reasoning...|GML, GraphML, GraphSON|Yes, recent commits, open and resolved issues.|Comphrehensive, largely up to date|
+|Titan (BerkeleyDB)|Gremlin|Any via Rexter HTTP (for triggering stored procedures)|Yes|No|Yes|Yes|None|No|Yes|Yes|Yes|Yes (via EventGraph)|Yes|Database|No|No|Yes (Apache 2/AGPL/Oracle OSI License)|Yes (from primary maintainers Aurelius)|Aurelius|CISCO, LANL, Digital Reasoning...|GML, GraphML, GraphSON|Yes, recent commits, open and resolved issues.|Comphrehensive, largely up to date|
+|Titan (Cassandra)|Gremlin|Any via Rexter HTTP (for triggering stored procedures)|No|Yes|Yes|Yes|None|No|Yes|Yes|Yes|Yes (via EventGraph)|Yes|Database|No. (Table level at best at the Cassandra Level, no cell based security)|At Cassandra level only.|Yes (Apache 2)|Yes (from primary maintainers Aurelius)|Aurelius|CISCO, LANL, Digital Reasoning...|GML, GraphML, GraphSON|Yes, recent commits, open and resolved issues.|Comphrehensive, largely up to date|
+|GraphLab|N/A|Python/Jython/Java?|N/A|N/A|Yes|Not yet|None|No|Yes|Yes|Yes||Yes?|Compute Engine|No|No|Yes (Apache 2)|Yes (from primary maintainers GraphLab)|GraphLab, Inc.|ExxonMobile, Adobe, Zillow||Yes, recent commits, open and resolved issues.|Somewhat sparse, but covers the basics.|
+|GraphX|Scala|None at present|N/A|N/A|Yes|Yes|Spark|No|Yes|Yes|No|No||Compute Engine|No|Possibly, via Spark Event Logging|Yes (Apache 2)|Yes (from Cloudera, MapR)|AmpLab, Databricks|||Yes, recent commits, open and resolved issues (to Spark repository).|Somewhat sparse, but covers the basics.|
+|Stinger|N/A|C, Java, Python|No|Yes|Yes|No|None|Yes|Yes|Yes|Yes|Yes||Compute Engine|No|No|Yes (MIT)|No|GA Tech||CSV, JSON|No|Minimal|
+|Apache Jena|SPARQL 1.1|JVM-based (via JDBC) for submitting SPARQL queries, Any (via HTTP) for submitting SPARQL queries.|Yes|No|Yes|No|None|No|One string valued label only|One string valued label only|Yes|Yes (on add)||Database (Triple Store)|No|Possibly, via Executiong Logging|Yes (Apache 2)|No|||RDF|Yes, recent commits, open and resolved issues.|Somewhat sparse, but covers the basics.|
+|Google Cayley|Freebase MQL/Gremlin-like Javascript|None at present|Yes (using BoltDB backend)||Yes|Yes|None|No|One string valued label only|One string valued label only|Yes|||Database (Triple Store)|Only at storage backend level, if at all.|Only at storage backend level, if at all.|Yes (Apache 2)|No|||RDF|Yes, recent commits, open and resolved issues.|Minimal|
+|Neo4J|Cypher|Any (via HTTP); libraries exist for Java, .NET, Python, Javascript, Ruby, PHP|Yes (single node)|Yes (cluster)|Yes|Enterprise Only; Master-Slave Replication Only|None|No|Yes|Yes|Yes|No|No|Database|No|Possibly, via Query Logging|Community Edition - GPLv3; Enterprise Edition - AGPLv3|Yes (from primary maintainers Neo4J)|Neo4J|eBay, Walmart, HP,...|Cypher script|Yes, recent commits, open and resolved issues.|Comphrehensive, largely up to date|
+|iGraph|N/A|R/Python/C(++)|N/A|N/A|Yes|No|None||Yes|Yes||||Compute Engine|No|No|Yes (GPL)|No||||Yes, recent commits, open and resolved issues.|Somewhat sparse, but covers the basics.|
+|Weaver|N/A|Python/C++|||Yes|Yes|HyperDex|No|Yes|Yes|Yes|Yes||Database|No||Yes (Roughly MIT license)|No||||Yes, recent commits, open and resolved issues.|Minimal|
