@@ -1,0 +1,366 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+    <title>Skyline by Lab41</title>
+
+    <link rel="stylesheet" href="stylesheets/styles.css">
+    <link rel="stylesheet" href="stylesheets/pygment_trac.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <!--[if lt IE 9]>
+    <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+  </head>
+  <body>
+    <div class="wrapper">
+      <header>
+        <h1>Skyline</h1>
+        <p>Processing graphs with streaming updates</p>
+
+        <p class="view"><a href="https://github.com/Lab41/SkyLine">View the Project on GitHub <small>Lab41/SkyLine</small></a></p>
+
+
+        <ul>
+          <li><a href="https://github.com/Lab41/SkyLine/zipball/master">Download <strong>ZIP File</strong></a></li>
+          <li><a href="https://github.com/Lab41/SkyLine/tarball/master">Download <strong>TAR Ball</strong></a></li>
+          <li><a href="https://github.com/Lab41/SkyLine">View On <strong>GitHub</strong></a></li>
+        </ul>
+      </header>
+      <section>
+        <h1>
+<a id="market-survey-of-graph-databasesanalytics-platforms" class="anchor" href="#market-survey-of-graph-databasesanalytics-platforms" aria-hidden="true"><span class="octicon octicon-link"></span></a>Market Survey of Graph Databases/Analytics Platforms</h1>
+
+<p>The purpose of this survey is to assess the featuresets of existing open source graph databases and graph analytics platforms and to determine which (if any) of these platforms are suitable for processing streaming updates to a large collection of graphs and triggering notifications when those updates cause certain conditions to be met or cease to be met.</p>
+
+<h2>
+<a id="points-of-comparison" class="anchor" href="#points-of-comparison" aria-hidden="true"><span class="octicon octicon-link"></span></a>Points of comparison</h2>
+
+<table>
+<thead>
+<tr>
+<th align="left">Name</th>
+<th align="left">Query Languages</th>
+<th align="left">Language Bindings/APIs Available</th>
+<th align="left">ACID Compliance</th>
+<th align="left">Eventual Consistency Support</th>
+<th align="left">Single Machine Mode?</th>
+<th align="left">Cluster Mode?</th>
+<th align="left">Platform Dependencies</th>
+<th align="left">Graph Size Limited by Memory?</th>
+<th align="left">Supports Edge Labels?</th>
+<th align="left">Supports Vertex Labels?</th>
+<th align="left">Supports Dynamic Graphs/Streaming?</th>
+<th align="left">Supports Triggering</th>
+<th align="left">Supports Many Graphs</th>
+<th align="left">Type?</th>
+<th align="left">Access Control Features</th>
+<th align="left">Supports Auditing</th>
+<th align="left">Open Source?</th>
+<th align="left">Commercial Support Available?</th>
+<th align="left">Major Advocates</th>
+<th align="left">Large Users</th>
+<th align="left">Supported Import/Export Formats</th>
+<th align="left">Active Community?</th>
+<th align="left">Quality of Documentation</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left">Titan (HBase)</td>
+<td align="left">Gremlin</td>
+<td align="left">Any via Rexter HTTP (for triggering stored procedures)</td>
+<td align="left">No</td>
+<td align="left">No (vertex consistency only)</td>
+<td align="left">Yes</td>
+<td align="left">Yes</td>
+<td align="left">None</td>
+<td align="left">No</td>
+<td align="left">Yes</td>
+<td align="left">Yes</td>
+<td align="left">Yes</td>
+<td align="left">Yes (via EventGraph)</td>
+<td align="left">Yes</td>
+<td align="left">Database</td>
+<td align="left">No. (Column level at best at the Hbase Level, no cell level security)</td>
+<td align="left">No</td>
+<td align="left">Yes (Apache 2)</td>
+<td align="left">Yes (from primary maintainers Aurelius)</td>
+<td align="left">Aurelius</td>
+<td align="left">CISCO, LANL, Digital Reasoning...</td>
+<td align="left">GML, GraphML, GraphSON</td>
+<td align="left">Yes, recent commits, open and resolved issues.</td>
+<td align="left">Comphrehensive, largely up to date</td>
+</tr>
+<tr>
+<td align="left">Titan (BerkeleyDB)</td>
+<td align="left">Gremlin</td>
+<td align="left">Any via Rexter HTTP (for triggering stored procedures)</td>
+<td align="left">Yes</td>
+<td align="left">No</td>
+<td align="left">Yes</td>
+<td align="left">Yes</td>
+<td align="left">None</td>
+<td align="left">No</td>
+<td align="left">Yes</td>
+<td align="left">Yes</td>
+<td align="left">Yes</td>
+<td align="left">Yes (via EventGraph)</td>
+<td align="left">Yes</td>
+<td align="left">Database</td>
+<td align="left">No</td>
+<td align="left">No</td>
+<td align="left">Yes (Apache 2/AGPL/Oracle OSI License)</td>
+<td align="left">Yes (from primary maintainers Aurelius)</td>
+<td align="left">Aurelius</td>
+<td align="left">CISCO, LANL, Digital Reasoning...</td>
+<td align="left">GML, GraphML, GraphSON</td>
+<td align="left">Yes, recent commits, open and resolved issues.</td>
+<td align="left">Comphrehensive, largely up to date</td>
+</tr>
+<tr>
+<td align="left">Titan (Cassandra)</td>
+<td align="left">Gremlin</td>
+<td align="left">Any via Rexter HTTP (for triggering stored procedures)</td>
+<td align="left">No</td>
+<td align="left">Yes</td>
+<td align="left">Yes</td>
+<td align="left">Yes</td>
+<td align="left">None</td>
+<td align="left">No</td>
+<td align="left">Yes</td>
+<td align="left">Yes</td>
+<td align="left">Yes</td>
+<td align="left">Yes (via EventGraph)</td>
+<td align="left">Yes</td>
+<td align="left">Database</td>
+<td align="left">No. (Table level at best at the Cassandra Level, no cell based security)</td>
+<td align="left">At Cassandra level only.</td>
+<td align="left">Yes (Apache 2)</td>
+<td align="left">Yes (from primary maintainers Aurelius)</td>
+<td align="left">Aurelius</td>
+<td align="left">CISCO, LANL, Digital Reasoning...</td>
+<td align="left">GML, GraphML, GraphSON</td>
+<td align="left">Yes, recent commits, open and resolved issues.</td>
+<td align="left">Comphrehensive, largely up to date</td>
+</tr>
+<tr>
+<td align="left">GraphLab</td>
+<td align="left">N/A</td>
+<td align="left">Python/Jython/Java?</td>
+<td align="left">N/A</td>
+<td align="left">N/A</td>
+<td align="left">Yes</td>
+<td align="left">Not yet</td>
+<td align="left">None</td>
+<td align="left">No</td>
+<td align="left">Yes</td>
+<td align="left">Yes</td>
+<td align="left">Yes</td>
+<td align="left"></td>
+<td align="left">Yes?</td>
+<td align="left">Compute Engine</td>
+<td align="left">No</td>
+<td align="left">No</td>
+<td align="left">Yes (Apache 2)</td>
+<td align="left">Yes (from primary maintainers GraphLab)</td>
+<td align="left">GraphLab, Inc.</td>
+<td align="left">ExxonMobile, Adobe, Zillow</td>
+<td align="left"></td>
+<td align="left">Yes, recent commits, open and resolved issues.</td>
+<td align="left">Somewhat sparse, but covers the basics.</td>
+</tr>
+<tr>
+<td align="left">GraphX</td>
+<td align="left">Scala</td>
+<td align="left">None at present</td>
+<td align="left">N/A</td>
+<td align="left">N/A</td>
+<td align="left">Yes</td>
+<td align="left">Yes</td>
+<td align="left">Spark</td>
+<td align="left">No</td>
+<td align="left">Yes</td>
+<td align="left">Yes</td>
+<td align="left">No</td>
+<td align="left">No</td>
+<td align="left"></td>
+<td align="left">Compute Engine</td>
+<td align="left">No</td>
+<td align="left">Possibly, via Spark Event Logging</td>
+<td align="left">Yes (Apache 2)</td>
+<td align="left">Yes (from Cloudera, MapR)</td>
+<td align="left">AmpLab, Databricks</td>
+<td align="left"></td>
+<td align="left"></td>
+<td align="left">Yes, recent commits, open and resolved issues (to Spark repository).</td>
+<td align="left">Somewhat sparse, but covers the basics.</td>
+</tr>
+<tr>
+<td align="left">Stinger</td>
+<td align="left">N/A</td>
+<td align="left">C, Java, Python</td>
+<td align="left">No</td>
+<td align="left">Yes</td>
+<td align="left">Yes</td>
+<td align="left">No</td>
+<td align="left">None</td>
+<td align="left">Yes</td>
+<td align="left">Yes</td>
+<td align="left">Yes</td>
+<td align="left">Yes</td>
+<td align="left">Yes</td>
+<td align="left"></td>
+<td align="left">Compute Engine</td>
+<td align="left">No</td>
+<td align="left">No</td>
+<td align="left">Yes (MIT)</td>
+<td align="left">No</td>
+<td align="left">GA Tech</td>
+<td align="left"></td>
+<td align="left">CSV, JSON</td>
+<td align="left">No</td>
+<td align="left">Minimal</td>
+</tr>
+<tr>
+<td align="left">Apache Jena</td>
+<td align="left">SPARQL 1.1</td>
+<td align="left">JVM-based (via JDBC) for submitting SPARQL queries, Any (via HTTP) for submitting SPARQL queries.</td>
+<td align="left">Yes</td>
+<td align="left">No</td>
+<td align="left">Yes</td>
+<td align="left">No</td>
+<td align="left">None</td>
+<td align="left">No</td>
+<td align="left">One string valued label only</td>
+<td align="left">One string valued label only</td>
+<td align="left">Yes</td>
+<td align="left">Yes (on add)</td>
+<td align="left"></td>
+<td align="left">Database (Triple Store)</td>
+<td align="left">No</td>
+<td align="left">Possibly, via Executiong Logging</td>
+<td align="left">Yes (Apache 2)</td>
+<td align="left">No</td>
+<td align="left"></td>
+<td align="left"></td>
+<td align="left">RDF</td>
+<td align="left">Yes, recent commits, open and resolved issues.</td>
+<td align="left">Somewhat sparse, but covers the basics.</td>
+</tr>
+<tr>
+<td align="left">Google Cayley</td>
+<td align="left">Freebase MQL/Gremlin-like Javascript</td>
+<td align="left">None at present</td>
+<td align="left">Yes (using BoltDB backend)</td>
+<td align="left"></td>
+<td align="left">Yes</td>
+<td align="left">Yes</td>
+<td align="left">None</td>
+<td align="left">No</td>
+<td align="left">One string valued label only</td>
+<td align="left">One string valued label only</td>
+<td align="left">Yes</td>
+<td align="left"></td>
+<td align="left"></td>
+<td align="left">Database (Triple Store)</td>
+<td align="left">Only at storage backend level, if at all.</td>
+<td align="left">Only at storage backend level, if at all.</td>
+<td align="left">Yes (Apache 2)</td>
+<td align="left">No</td>
+<td align="left"></td>
+<td align="left"></td>
+<td align="left">RDF</td>
+<td align="left">Yes, recent commits, open and resolved issues.</td>
+<td align="left">Minimal</td>
+</tr>
+<tr>
+<td align="left">Neo4J</td>
+<td align="left">Cypher</td>
+<td align="left">Any (via HTTP); libraries exist for Java, .NET, Python, Javascript, Ruby, PHP</td>
+<td align="left">Yes (single node)</td>
+<td align="left">Yes (cluster)</td>
+<td align="left">Yes</td>
+<td align="left">Enterprise Only; Master-Slave Replication Only</td>
+<td align="left">None</td>
+<td align="left">No</td>
+<td align="left">Yes</td>
+<td align="left">Yes</td>
+<td align="left">Yes</td>
+<td align="left">No</td>
+<td align="left">No</td>
+<td align="left">Database</td>
+<td align="left">No</td>
+<td align="left">Possibly, via Query Logging</td>
+<td align="left">Community Edition - GPLv3; Enterprise Edition - AGPLv3</td>
+<td align="left">Yes (from primary maintainers Neo4J)</td>
+<td align="left">Neo4J</td>
+<td align="left">eBay, Walmart, HP,...</td>
+<td align="left">Cypher script</td>
+<td align="left">Yes, recent commits, open and resolved issues.</td>
+<td align="left">Comphrehensive, largely up to date</td>
+</tr>
+<tr>
+<td align="left">iGraph</td>
+<td align="left">N/A</td>
+<td align="left">R/Python/C(++)</td>
+<td align="left">N/A</td>
+<td align="left">N/A</td>
+<td align="left">Yes</td>
+<td align="left">No</td>
+<td align="left">None</td>
+<td align="left"></td>
+<td align="left">Yes</td>
+<td align="left">Yes</td>
+<td align="left"></td>
+<td align="left"></td>
+<td align="left"></td>
+<td align="left">Compute Engine</td>
+<td align="left">No</td>
+<td align="left">No</td>
+<td align="left">Yes (GPL)</td>
+<td align="left">No</td>
+<td align="left"></td>
+<td align="left"></td>
+<td align="left"></td>
+<td align="left">Yes, recent commits, open and resolved issues.</td>
+<td align="left">Somewhat sparse, but covers the basics.</td>
+</tr>
+<tr>
+<td align="left">Weaver</td>
+<td align="left">N/A</td>
+<td align="left">Python/C++</td>
+<td align="left"></td>
+<td align="left"></td>
+<td align="left">Yes</td>
+<td align="left">Yes</td>
+<td align="left">HyperDex</td>
+<td align="left">No</td>
+<td align="left">Yes</td>
+<td align="left">Yes</td>
+<td align="left">Yes</td>
+<td align="left">Yes</td>
+<td align="left"></td>
+<td align="left">Database</td>
+<td align="left">No</td>
+<td align="left"></td>
+<td align="left">Yes (Roughly MIT license)</td>
+<td align="left">No</td>
+<td align="left"></td>
+<td align="left"></td>
+<td align="left"></td>
+<td align="left">Yes, recent commits, open and resolved issues.</td>
+<td align="left">Minimal</td>
+</tr>
+</tbody>
+</table>
+      </section>
+      <footer>
+        <p>This project is maintained by <a href="https://github.com/Lab41">Lab41</a></p>
+        <p><small>Hosted on GitHub Pages &mdash; Theme by <a href="https://github.com/orderedlist">orderedlist</a></small></p>
+      </footer>
+    </div>
+    <script src="javascripts/scale.fix.js"></script>
+    
+  </body>
+</html>
