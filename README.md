@@ -35,7 +35,6 @@ Due to the number of systems under consideration varied nature of the points on 
 1. http://github.com/apache/jena
 1. http://github.com/boltdb/bolt
 1. http://graphlab.com/company/press/index.html
-1. 
 1. http://graphlab.com/learn/userguide/index.html
 1. http://graphlab.com/products/create/docs/generated/graphlab.SFrame.html
 1. http://graphlab.com/products/create/docs/generated/graphlab.SGraph.html
