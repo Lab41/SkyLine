@@ -1,0 +1,18 @@
+fakeIds = [:]
+gr = new File("/Users/ksoorya/da_graph.txt").text.tokenize("\n").collect { it.tokenize(","); }.collect { it[0].equals("1") ? [1, it[1].toInteger()] : [2, it[1].toInteger(), it[2].toInteger()]; }; println "done parsing input";
+
+start = System.currentTimeMillis()
+g = TitanFactory.open('/Users/ksoorya/titan-0.5.3-hadoop2/conf/titan-berkeleydb-es.properties')
+gr.each { i ->
+	if(i[0] == 1) {
+		fakeIds[i[1]] = g.addVertex([name: i[1]]);
+	}
+	else {
+		g.addEdge(fakeIds[i[1]], fakeIds[i[2]], "a");
+	}
+}; true;
+stop = System.currentTimeMillis()
+
+println "Time taken was " + ((stop-start)/1000.0) + "s!";
+
+exit
